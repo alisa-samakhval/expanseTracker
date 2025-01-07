@@ -6,7 +6,7 @@ from datetime import datetime
 
 bot = telebot.TeleBot("7384864093:AAHLe0c-h6HzhRQx2CDIbDjhpbQ1DaiZK3Q")
 
-@bot.message_handler(commands=['start','hi','hello'])
+@bot.message_handler(commands=['start','hi','hello', 'add'])
 def start(message):
     #bot.send_message(message.chat.id, "Welcome! I'll help you to track your expanses.  ")
 
@@ -76,7 +76,7 @@ def save_expense(message, category):
 
 @bot.message_handler(commands=['view'])
 def view_expenses(message):
-    conn = sqlite3.connect('venv/expenses.db')
+    conn = sqlite3.connect('/Users/alisasamohval/IdeaProjects/FinanceTelegramBot/venv/expenses.db')
     cursor = conn.cursor()
     cursor.execute('SELECT category, amount, description, date FROM expenses WHERE user_id = ? ORDER BY date DESC LIMIT 10', (message.chat.id,))
     rows = cursor.fetchall()
