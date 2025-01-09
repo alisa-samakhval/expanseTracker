@@ -36,6 +36,7 @@ def start(message):
     bot.send_message(message.chat.id, "Welcome! I'll help you track your expenses. Use the buttons below to add expenses.")
     bot.send_message(message.chat.id,
 """
+Commands available: 
     /start - start
     /add - add an expense
     /recent - view 10 most recent spending
