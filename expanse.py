@@ -34,12 +34,24 @@ def start(message):
 
     # Send a welcome message
     bot.send_message(message.chat.id, "Welcome! I'll help you track your expenses. Use the buttons below to add expenses.")
-
+    bot.send_message(message.chat.id,
+"""
+    /start - start
+    /add - add an expense
+    /recent - view 10 most recent spending
+    /today - view all today’s spendings
+    /week - view all this week’s spendings
+    /month - view all this month’s spendings
+    /deleterecent - delete on of the recent spending records
+    /viewcategory - view all month’s spendings on a selected category
+    /report - generate month report
+    """)
     # Call the /add functionality to display category options
     add_expenses(message)
 
 
 # Add expenses function (category selection)
+@bot.message_handler(commands=['add'])
 def add_expenses(message):
     # Create the inline keyboard for expense categories
     markup = types.InlineKeyboardMarkup(row_width=2)
@@ -193,7 +205,7 @@ def view_and_delete_recent_expenses(message):
         bot.send_message(message.chat.id, "No expenses recorded yet.")
 
 # View expenses by category for this month
-@bot.message_handler(commands=['viewByCategory'])
+@bot.message_handler(commands=['viewcategory'])
 def view_by_category(message):
     # Ask the user to pick a category
     markup = types.InlineKeyboardMarkup(row_width=2)
