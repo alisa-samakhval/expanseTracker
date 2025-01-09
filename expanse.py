@@ -93,7 +93,7 @@ def save_expense(message, category):
         bot.send_message(message.chat.id, "Error: Please enter a valid amount. Example: `20 lunch`")
 
 
-# View recent expenses without deletion option
+# View recent expenses without deletion option.
 @bot.message_handler(commands=['recent'])
 def view_recent_expenses(message):
     conn = sqlite3.connect('expenses.db')
